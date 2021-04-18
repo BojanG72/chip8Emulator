@@ -10,4 +10,10 @@ Writting an emulator for the CHIP-8 is an easy project to get started in emulato
 https://en.wikipedia.org/wiki/CHIP-8
 
 
+## Technologies
+Project is created with:
+* C/C++
+* Make
+* OpenGL
+
 
