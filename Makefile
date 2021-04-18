@@ -7,7 +7,7 @@ CC = g++
 LDFLAGS = -lSDL2 -lGL -lGLEW -lglut -lGLU
 
 # Makefile settings - Can be customized.
-APPNAME = chip8Emulator
+APPNAME = chip8Emulator.exe
 EXT = .cpp
 SRCDIR = src
 OBJDIR = obj
