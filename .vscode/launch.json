@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/chip8Emulator",
+            "program": "${workspaceFolder}/chip8Emulator.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

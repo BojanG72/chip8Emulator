@@ -2,6 +2,10 @@
 #include <GL/glut.h>
 #include "chip8.h"
 #include <GL/glu.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_FILENAME_SIZE	100
 
 // Display size
 #define SCREEN_WIDTH 64
@@ -29,37 +33,45 @@ void setupTexture();
 
 int main(int argc, char** argv) {
 
-	const char *romName = "roms/pong2.c8";
-	// const char *romName = "roms/IBM Logo.ch8";
+	char romName[MAX_FILENAME_SIZE];
 
-    // Load game
-	if(!myChip8.loadGame(romName))
+	if (argc > 1)
 	{
-		return 1;
+		strcpy(romName, argv[1]);
 
-	}	
+		///< Load game
+		if(!myChip8.loadGame(romName))
+		{
+			return 1;
+		}	
+			
+		///< Setup OpenGL
+		glutInit(&argc, (char **)argv);          
+		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+
+		glutInitWindowSize(display_width, display_height);
+		glutInitWindowPosition(320, 320);
+		glutCreateWindow("myChip8");
 		
-    	// Setup OpenGL
-	glutInit(&argc, (char **)argv);          
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+		glutDisplayFunc(display);
+		glutIdleFunc(display);
+		glutReshapeFunc(reshape_window);        
+		glutKeyboardFunc(keyboardDown);
+		glutKeyboardUpFunc(keyboardUp);
 
-	glutInitWindowSize(display_width, display_height);
-    glutInitWindowPosition(320, 320);
-	glutCreateWindow("myChip8");
-	
-	glutDisplayFunc(display);
-	glutIdleFunc(display);
-    glutReshapeFunc(reshape_window);        
-	glutKeyboardFunc(keyboardDown);
-	glutKeyboardUpFunc(keyboardUp);
+		#ifdef DRAWWITHTEXTURE
+		setupTexture();			
+		#endif	
 
-    #ifdef DRAWWITHTEXTURE
-	setupTexture();			
-    #endif	
+		glutMainLoop(); 
+	}
+	else
+	{
+		printf("Missing input arguments\n");
+		printf("Usage: ./chip8Emulator <Rom Name>\n");
+	}
 
-	glutMainLoop(); 
-
-	return 0;
+	return 1;
 }
 
 
