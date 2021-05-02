@@ -9,6 +9,9 @@ Writting an emulator for the CHIP-8 is an easy project to get started in emulato
 
 https://en.wikipedia.org/wiki/CHIP-8
 
+![image](https://user-images.githubusercontent.com/34256829/116816314-72a28c00-ab2f-11eb-8976-1ff0131ca985.png)
+
+
 
 ## Technologies
 Project is created with:
